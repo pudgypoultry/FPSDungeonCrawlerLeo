@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhsdh1pymnkl4"]
+
+[ext_resource type="Script" path="res://Scripts/BasicTile.gd" id="1_0cuhr"]
+[ext_resource type="Texture2D" uid="uid://cxqqnuxab5nge" path="res://Assets/1.png" id="2_pawqp"]
+[ext_resource type="Material" uid="uid://ck6rg4dfntd16" path="res://Assets/TestMetalTile.material" id="3_4wfw2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2on4s"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uuult"]
+size = Vector3(1, 0.1, 1)
+
+[node name="BasicTile" type="StaticBody3D" node_paths=PackedStringArray("collider", "mesh")]
+script = ExtResource("1_0cuhr")
+texture = ExtResource("2_pawqp")
+collider = NodePath("CollisionShape3D")
+mesh = NodePath("MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2on4s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_4wfw2")
+mesh = SubResource("BoxMesh_uuult")
+skeleton = NodePath("../..")

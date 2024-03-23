@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b32q6k1mial3x"]
+
+[ext_resource type="Script" path="res://Scripts/BasicCharacter.gd" id="1_2cxio"]
+[ext_resource type="PackedScene" uid="uid://dc0ixwy3wyggn" path="res://Scenes/DirectionCheck.tscn" id="2_3wu5q"]
+
+[node name="BasicCharacter" type="Node3D" node_paths=PackedStringArray("leftCheck", "rightCheck", "forwardCheck", "backwardCheck", "selfCheck", "cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_2cxio")
+leftCheck = NodePath("LeftCheck")
+rightCheck = NodePath("RightCheck")
+forwardCheck = NodePath("FrontCheck")
+backwardCheck = NodePath("BackCheck")
+selfCheck = NodePath("SelfCheck")
+cam = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="FrontCheck" parent="." instance=ExtResource("2_3wu5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="LeftCheck" parent="." instance=ExtResource("2_3wu5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="BackCheck" parent="." instance=ExtResource("2_3wu5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="RightCheck" parent="." instance=ExtResource("2_3wu5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="SelfCheck" parent="." instance=ExtResource("2_3wu5q")]

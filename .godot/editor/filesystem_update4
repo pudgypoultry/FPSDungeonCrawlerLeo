@@ -1,0 +1,6 @@
+res://Scenes/MainTestingScene.tscn
+res://Assets/TestMetalTile.material
+res://Scripts/BasicCharacter.gd
+res://Scenes/BasicTile.tscn
+res://Scenes/DirectionCheck.tscn
+res://Scenes/BasicCharacter.tscn

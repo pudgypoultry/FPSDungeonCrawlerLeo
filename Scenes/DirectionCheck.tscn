@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc0ixwy3wyggn"]
+
+[ext_resource type="Script" path="res://Scripts/DirectionCheck.gd" id="1_n6nwp"]
+
+[node name="DirectionCheck" type="Node3D" node_paths=PackedStringArray("checkRay")]
+script = ExtResource("1_n6nwp")
+checkRay = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
