@@ -4,3 +4,9 @@ res://Scripts/BasicCharacter.gd
 res://Scenes/BasicTile.tscn
 res://Scenes/DirectionCheck.tscn
 res://Scenes/BasicCharacter.tscn
+res://Scripts/BasicTile.gd
+res://Scripts/DirectionCheck.gd
+res://Scripts/BasicStairs.gd
+res://Scripts/GlobalEnums.gd
+res://Scripts/Directions.gd
+res://Scenes/BasicStairs.tscn

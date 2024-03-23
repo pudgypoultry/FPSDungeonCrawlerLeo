@@ -130,3 +130,4 @@ collider = NodePath("../BasicTile/CollisionShape3D")
 mesh = NodePath("../BasicTile/MeshInstance3D")
 
 [node name="BasicCharacter" parent="." instance=ExtResource("2_ageag")]
+timeToMove = 0.2

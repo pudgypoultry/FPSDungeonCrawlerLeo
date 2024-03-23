@@ -20,3 +20,6 @@ func IsMovementObstructed():
 func GetTile():
 	if checkRay.get_collider() is BasicTile:
 		return checkRay.get_collider()
+
+func GetCollider():
+	return checkRay.get_collider()

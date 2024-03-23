@@ -16,15 +16,16 @@ cam = NodePath("Camera3D")
 [node name="Camera3D" type="Camera3D" parent="."]
 
 [node name="FrontCheck" parent="." instance=ExtResource("2_3wu5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -1)
 
 [node name="LeftCheck" parent="." instance=ExtResource("2_3wu5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 0)
 
 [node name="BackCheck" parent="." instance=ExtResource("2_3wu5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 1)
 
 [node name="RightCheck" parent="." instance=ExtResource("2_3wu5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 0)
 
 [node name="SelfCheck" parent="." instance=ExtResource("2_3wu5q")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

@@ -12,6 +12,7 @@ extends Node3D
 
 @export_category("Movement Control")
 @export var timeToMove : float = 0.2
+@export var facing : GlobalEnums.Direction = GlobalEnums.Direction.NORTH
 
 var currentAngle : Vector3
 var leftRotation : Vector3 = Vector3(0, PI/2, 0)
@@ -28,16 +29,25 @@ func _ready():
 func _process(delta):
 	PlayerMovement()
 
+# METHOD OF FINDING CURRENT FACING DIRECTION
+func RotateFacing(directionTurning : GlobalEnums.Turning, currentFacing : GlobalEnums.Direction):
+	if directionTurning == GlobalEnums.Turning.TURNWISE:
+		facing = (currentFacing + 1) % 4
+	if directionTurning == GlobalEnums.Turning.WIDDERSHINS:
+		facing = int(fposmod(currentFacing - 1, 4))
+
 
 """
 MOVEMENT HELPERS
 """
 func PlayerMovement():
 	if Input.is_action_just_pressed("TurnLeft") && canMove:
+		RotateFacing(GlobalEnums.Turning.WIDDERSHINS, facing)
 		TweenRotate(rotation + leftRotation)
 		CurrentlyMoving()
 	
 	if Input.is_action_just_pressed("TurnRight") && canMove:
+		RotateFacing(GlobalEnums.Turning.TURNWISE, facing)
 		TweenRotate(rotation + rightRotation)
 		CurrentlyMoving()
 	
@@ -49,11 +59,15 @@ func PlayerMovement():
 			print_debug("Kathunk")
 	
 	if Input.is_action_just_pressed("MoveBackward") && canMove:
-		if !backwardCheck.IsMovementObstructed():
-			TweenPosition(position + cam.global_basis.z)
-			CurrentlyMoving()
+		# Deal with the situation where we are attempting to move into a normal tile
+		if backwardCheck.GetCollider() is BasicTile:
+			if !backwardCheck.IsMovementObstructed():
+				TweenPosition(position + cam.global_basis.z)
+				CurrentlyMoving()
+			else:
+				print_debug("Kathunk (Basic Edition)")
 		else:
-			print_debug("Kathunk")
+			print_debug("Kathunk (Blank edition)")
 	
 	if Input.is_action_just_pressed("StrafeLeft") && canMove:
 		if !leftCheck.IsMovementObstructed():
@@ -89,7 +103,7 @@ func CurrentlyMoving():
 
 func InteractActive():
 	pass
-
+	
 
 
 func InteractCollide():
